@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Mirror · Send</title>
+  <link rel="stylesheet" href="/base.css">
+</head>
+<body class="send">
+  <main>
+    <header>
+      <h1>Send screen</h1>
+      <p>Use Safari on this page. Do not use Control Center Screen Mirroring.</p>
+    </header>
+
+    <p class="notice">
+      <strong>Screen Mirroring (AirPlay)</strong> only lists TVs, Apple TV, or AirPlay Macs.
+      This PC is not listed here — use the link or QR from the PC, or run <strong>start-airplay.bat</strong> for AirPlay.
+    </p>
+
+    <ol class="steps">
+      <li>Tap <strong>Start sharing</strong> below.</li>
+      <li>When prompted, choose <strong>Entire screen</strong>.</li>
+      <li>Keep Safari open while streaming.</li>
+    </ol>
+
+    <button type="button" class="start" data-start>Start sharing</button>
+    <button type="button" class="stop-send" data-stop-send hidden>Stop sharing</button>
+
+    <p class="meta" data-send-state>Ready</p>
+
+    <video playsinline muted hidden data-video></video>
+    <canvas hidden data-canvas></canvas>
+  </main>
+  <script type="module" src="/send.js" data-token="{{token}}"></script>
+</body>
+</html>

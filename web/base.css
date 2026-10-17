@@ -1,0 +1,266 @@
+:root {
+  color-scheme: dark;
+  --bg: #101010;
+  --card: #171717;
+  --text: #f3f3f3;
+  --muted: #9b9b9b;
+  --line: #2c2c2c;
+  --live: #3cce7a;
+  --warn-bg: #2a2214;
+  --warn-text: #f0d7a4;
+  --danger: #ffb4b4;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+select {
+  font: inherit;
+  color: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.55rem 0.9rem;
+}
+
+button:hover { background: #222; }
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.host-layout {
+  width: min(960px, calc(100% - 32px));
+  margin: 32px auto 48px;
+  display: grid;
+  gap: 20px;
+}
+
+.send main {
+  width: min(440px, calc(100% - 32px));
+  margin: 32px auto 48px;
+  display: grid;
+  gap: 16px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+h2 {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+p { margin: 0; line-height: 1.45; }
+
+header p,
+.meta,
+.url { color: var(--muted); }
+
+.connect {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+
+.qr {
+  width: 240px;
+  height: 240px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.url {
+  font-family: "Cascadia Mono", Consolas, ui-monospace, monospace;
+  font-size: 0.82rem;
+  text-align: center;
+  word-break: break-all;
+}
+
+.status { display: grid; gap: 4px; }
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.dot.on { background: var(--live); }
+
+.monitor { display: grid; gap: 8px; }
+
+label { color: var(--muted); font-size: 0.85rem; }
+
+select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+}
+
+.preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.preview-head h2 {
+  margin: 0;
+}
+
+.preview canvas {
+  display: block;
+  width: 100%;
+  height: 220px;
+  background: #000;
+  border-radius: 8px;
+}
+
+.preview--live canvas {
+  height: min(70vh, 720px);
+}
+
+.send .start {
+  padding: 0.85rem 1rem;
+  font-size: 1.05rem;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+}
+
+.send .start:disabled {
+  opacity: 0.7;
+}
+
+.send .stop-send {
+  color: var(--danger);
+  border-color: #5a3030;
+  background: transparent;
+}
+
+.notice {
+  padding: 12px 14px;
+  border: 1px solid #4a4030;
+  border-radius: 10px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  line-height: 1.45;
+}
+
+.notice strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.steps strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.stop {
+  justify-self: start;
+  color: var(--danger);
+  border-color: #5a3030;
+  background: transparent;
+}
+
+.warn {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--warn-bg);
+  color: var(--warn-text);
+}
+
+.done {
+  margin: 20vh auto;
+  max-width: 28rem;
+  padding: 0 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.view {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+.view canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chip {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top));
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 0.85rem;
+  transition: opacity 0.4s ease;
+}
+
+.chip button {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: transparent;
+}
+
+.chip.quiet {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip { transition: none; }
+}

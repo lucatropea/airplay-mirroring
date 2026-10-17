@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mirror</title>
+  <link rel="stylesheet" href="/base.css">
+</head>
+<body class="host">
+  <main class="host-layout">
+    <header>
+      <h1>Mirror</h1>
+      <p>View your iPad screen on this PC. Same Wi‑Fi network.</p>
+    </header>
+
+    <p class="notice">
+      For native <strong>Screen Mirroring</strong> (AirPlay), run <strong>start-airplay.bat</strong> instead of this page.
+      Below is the browser fallback (Safari link / QR).
+    </p>
+
+    <p class="warn" data-lan-warn hidden>
+      This PC is not on a local network. Connect to Wi‑Fi and restart Mirror.
+    </p>
+
+    <section class="connect">
+      <img class="qr" src="/qr.png" width="240" height="240" alt="QR code to open the sender page on iPad">
+      <p class="url">{{url}}</p>
+      <button type="button" data-copy>Copy link</button>
+    </section>
+
+    <section class="status">
+      <p><span class="dot" data-dot></span><span data-link-state>Waiting for iPad</span></p>
+      <p class="meta"><span data-capture-fps>0</span> fps · <span data-size>—</span></p>
+    </section>
+
+    <section class="preview preview--live">
+      <div class="preview-head">
+        <h2>iPad screen</h2>
+        <button type="button" data-full>Fullscreen</button>
+      </div>
+      <canvas data-stream="/live/{{token}}?role=host" data-frame="/frame/{{token}}" aria-label="iPad screen"></canvas>
+    </section>
+
+    <button type="button" class="stop" data-stop>Stop server</button>
+  </main>
+  <script type="module" src="/stream.js"></script>
+  <script type="module" src="/host.js"></script>
+</body>
+</html>
